@@ -35,7 +35,7 @@ const CMbarChart = ({
         indicator = "line", //  툴팁의 인디케이터 스타일
       } = {},
     } = {},
-    barChart: {
+    chart: {
       accessibilityLayer = false, // 키보드 접근과 스크린리더 기능 on/off
       vertical, // 배경 선 그리기 x축 | x + y축 // || 데이터 없으면 안 그림
       xAxis: {
@@ -44,12 +44,12 @@ const CMbarChart = ({
         axisLine = false, // 축의 선 on/off
         tickFormatter = (value: string) => value.slice(0, 3), // 눈금선의 텍스트 포맷
       } = {},
-      bar: {
-        radius = 4, // 바의 모서리 둥글기
-        opacity = 1, // 바의 투명도
-        stroke = "none", // 바의 테두리 색상
-        strokeWidth = 0.5, // 바의 테두리 두께
-      } = {},
+    } = {},
+    bar: {
+      radius = 4, // 바의 모서리 둥글기
+      opacity = 1, // 바의 투명도
+      stroke = "none", // 바의 테두리 색상
+      strokeWidth = 0.5, // 바의 테두리 두께
     } = {},
     legend = false, // 범례 on/off || false
   } = customChartConfig || {};
@@ -58,6 +58,11 @@ const CMbarChart = ({
   return (
     <ChartContainer className={chartContainerClassName} config={chartConfig}>
       <BarChart accessibilityLayer={accessibilityLayer} data={chartData.data}>
+        {/* 커서 올렸을 때 */}
+        <ChartTooltip
+          cursor={cursor}
+          content={<ChartTooltipContent indicator={indicator} />}
+        />
         {/* 배경에 축 선 그리기 */}
         {vertical && (
           <CartesianGrid vertical={vertical === "x" ? false : true} />
@@ -69,11 +74,6 @@ const CMbarChart = ({
           tickMargin={tickMargin}
           axisLine={axisLine}
           tickFormatter={tickFormatter}
-        />
-        {/* 커서 올렸을 때 */}
-        <ChartTooltip
-          cursor={cursor}
-          content={<ChartTooltipContent indicator={indicator} />}
         />
         {/* 범례 */}
         {legend && <ChartLegend content={<ChartLegendContent />} />}

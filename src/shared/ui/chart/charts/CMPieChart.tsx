@@ -10,7 +10,7 @@ import { TChartProps, TCustomPieChartConfig } from "../chart.type";
 
 const CMPieChart = ({
   chartData,
-  chartConfig,
+  chartConfig = {},
   customChartConfig,
 }: TChartProps<TCustomPieChartConfig>) => {
   // TCustomPieChartConfig와 TBasicCustomChartConfig에서 필요한 값만 구조 분해 및 기본값 설정
@@ -59,10 +59,7 @@ const CMPieChart = ({
 
   //
   return (
-    <ChartContainer
-      config={chartConfig || {}}
-      className={chartContainerClassName}
-    >
+    <ChartContainer config={chartConfig} className={chartContainerClassName}>
       <PieChart>
         {/* cursor는 반응없고, content는 숨기는게 best여서 커스텀 안함 */}
         <ChartTooltip
