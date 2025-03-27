@@ -1,26 +1,9 @@
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import { TChartProps } from "@/shared/ui/chart/chart.type";
 import { Chart } from "@/shared/ui/chart/Chart";
-import {
-  barChartConfig,
-  barChartData,
-  customBarChartConfig,
-} from "@/shared/data/barChart.example.data";
-import { pieChartData } from "./shared/data/pieChart.example.data";
+import { barChartProps } from "@/shared/data/barChart.example.data";
+import { pieChartProps } from "@/shared/data/pieChart.example.data";
 
 function App() {
-  const barChartProps: TChartProps = {
-    chartData: barChartData,
-    chartConfig: barChartConfig,
-    customChartConfig: customBarChartConfig,
-  };
-
-  const pieChartProps: TChartProps = {
-    chartData: pieChartData,
-    chartConfig: {}, // 파이 차트에 대한 설정
-    customChartConfig: {}, // 파이 차트에 대한 커스텀 설정
-  };
-
   const navItems = [
     { path: "/", label: "홈 페이지" },
     { path: "/bar-chart", label: "Bar Chart" },

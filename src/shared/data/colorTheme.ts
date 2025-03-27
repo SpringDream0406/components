@@ -70,4 +70,22 @@ export const colorTheme = {
     "#184e77",
   ],
   vividColors_5: ["#f9c80e", "#f86624", "#ea3546", "#662e9b", "#43bccd"],
+
+  // Root 컬러 테마
+  rootColors_5: [
+    "hsl(12, 76%, 61%)", // --chart-1
+    "hsl(173, 58%, 39%)", // --chart-2
+    "hsl(197, 37%, 24%)", // --chart-3
+    "hsl(43, 74%, 66%)", // --chart-4
+    "hsl(27, 87%, 67%)", // --chart-5
+  ],
+
+  // Dark 모드 컬러 테마
+  darkColors_5: [
+    "hsl(220, 70%, 50%)", // --chart-1
+    "hsl(160, 60%, 45%)", // --chart-2
+    "hsl(30, 80%, 55%)", // --chart-3
+    "hsl(280, 65%, 60%)", // --chart-4
+    "hsl(340, 75%, 55%)", // --chart-5
+  ],
 };

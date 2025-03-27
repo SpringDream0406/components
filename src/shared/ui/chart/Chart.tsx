@@ -1,4 +1,8 @@
-import { TChartProps } from "./chart.type";
+import {
+  TChartProps,
+  TCustomBarChartConfig,
+  TCustomPieChartConfig,
+} from "./chart.type";
 import CMbarChart from "./charts/CMBarChart";
 import CMPieChart from "./charts/CMPieChart";
 
@@ -6,7 +10,7 @@ export const Chart = ({
   chartData,
   chartConfig,
   customChartConfig,
-}: TChartProps) => {
+}: TChartProps<TCustomBarChartConfig | TCustomPieChartConfig>) => {
   // console.log(chartData.type);
   // console.log(chartConfig);
 
@@ -21,7 +25,7 @@ export const Chart = ({
       case "bar":
         return <CMbarChart {...chartProps} />;
       case "pie":
-        return <CMPieChart />;
+        return <CMPieChart {...chartProps} />;
       default:
         return <>null</>;
     }

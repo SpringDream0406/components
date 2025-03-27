@@ -1,10 +1,14 @@
 // import { Monitor, Smartphone } from "lucide-react";
 
 import { ChartConfig } from "../shadcn/ui/chart";
-import { TChartData, TCustomChartConfig } from "../ui/chart/chart.type";
+import {
+  TChartData,
+  TChartProps,
+  TCustomBarChartConfig,
+} from "../ui/chart/chart.type";
 import { colorTheme } from "./colorTheme";
 
-export const barChartData: TChartData = {
+const barChartData: TChartData = {
   type: "bar",
   data: [
     {
@@ -83,18 +87,18 @@ export const barChartData: TChartData = {
   ],
 };
 
-export const customBarChartConfig: TCustomChartConfig = {
+const customBarChartConfig: TCustomBarChartConfig = {
+  theme: colorTheme.vividColors_5,
   animation: {
     // duration: 500,
   },
-  //   tooltip: {
-  //     cursor: false,
-  //     content: {
-  //       indicator: "line",
-  //     },
-  //   },
+  tooltip: {
+    cursor: false,
+    content: {
+      indicator: "line",
+    },
+  },
   //   legend: false,
-  theme: colorTheme.lightGreenToDarkBlue_10,
   //   barChart: {
   //     accessibilityLayer: true,
   //     vertical: "x",
@@ -113,8 +117,8 @@ export const customBarChartConfig: TCustomChartConfig = {
   //   },
 };
 
-// 테마를 설정하고 범례가 필요없다면
-export const barChartConfig: ChartConfig = {
+// 테마를 설정하고 범례가 필요없다면 없어도 됨
+const barChartConfig: ChartConfig = {
   desktop: {
     label: "Desktop",
     // icon: Monitor,
@@ -165,4 +169,10 @@ export const barChartConfig: ChartConfig = {
     // icon: Accessory,
     // color: "#a855f7",
   },
+};
+
+export const barChartProps: TChartProps<TCustomBarChartConfig> = {
+  chartData: barChartData,
+  chartConfig: barChartConfig,
+  customChartConfig: customBarChartConfig,
 };

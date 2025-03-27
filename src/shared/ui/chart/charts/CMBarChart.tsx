@@ -6,25 +6,34 @@ import {
   ChartTooltipContent,
 } from "@/shared/shadcn/ui/chart";
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
-import { TChartProps } from "../chart.type";
+import { TChartProps, TCustomBarChartConfig } from "../chart.type";
 
 const CMbarChart = ({
   chartData,
   chartConfig = {},
   customChartConfig,
-}: TChartProps) => {
+}: TChartProps<TCustomBarChartConfig>) => {
   // 첫 번째 데이터 항목의 키들 가져오기
   const dataKeys = Object.keys(chartData.data[0]);
-  // 첫 번째 키를 XAxis의 dataKey로 사용
+  // label을 XAxis의 dataKey로 사용
   const xAxisKey = "label";
   // 나머지 키들을 Bar 컴포넌트의 dataKey로 사용
   const barKeys = dataKeys.filter((key) => key !== xAxisKey);
 
   // customChartConfig에서 필요한 속성을 구조 분해 할당으로 추출 하거나 기본값 할당
   const {
+    chartContainerClassName = "", // 차트 컨테이너의 className || ""
+    theme = "black", // 차트의 색상 테마로 적용하기 // chartConfig의 color || 테마 반복 || black
+    animation: {
+      isAnimationActive = true, // 애니메이션 on/off || true
+      animationBegin = 0, // 애니메이션 시작 시간
+      animationDuration = 500, // 애니메이션 지속 시간
+    } = {},
     tooltip: {
       cursor = false, // 툴팁의 커서 on/off
-      content: { indicator = "line" } = {}, //  툴팁의 인디케이터 스타일
+      content: {
+        indicator = "line", //  툴팁의 인디케이터 스타일
+      } = {},
     } = {},
     barChart: {
       accessibilityLayer = false, // 키보드 접근과 스크린리더 기능 on/off
@@ -43,15 +52,11 @@ const CMbarChart = ({
       } = {},
     } = {},
     legend = false, // 범례 on/off || false
-    theme = "black", // 차트의 색상 테마로 적용하기 // chartConfig의 color || 테마(최대 숫자 초과한건 없는걸로 처리) || black
-    animation: {
-      duration = 500, // 애니메이션 지속 시간
-    } = {},
   } = customChartConfig || {};
 
   //
   return (
-    <ChartContainer config={chartConfig}>
+    <ChartContainer className={chartContainerClassName} config={chartConfig}>
       <BarChart accessibilityLayer={accessibilityLayer} data={chartData.data}>
         {/* 배경에 축 선 그리기 */}
         {vertical && (
@@ -77,12 +82,14 @@ const CMbarChart = ({
           <Bar
             key={key}
             dataKey={key}
-            fill={chartConfig[key]?.color || theme?.[index]}
+            fill={chartConfig[key]?.color || theme?.[index % theme.length]}
             radius={radius}
             opacity={opacity}
             stroke={stroke}
             strokeWidth={strokeWidth}
-            animationDuration={duration}
+            isAnimationActive={isAnimationActive}
+            animationBegin={animationBegin}
+            animationDuration={animationDuration}
           />
         ))}
       </BarChart>
