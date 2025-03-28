@@ -3,29 +3,34 @@ import { Label, Pie, PieChart } from "recharts";
 
 import {
   ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
 } from "@/shared/shadcn/ui/chart";
 import { TChartProps, TCustomPieChartConfig } from "../chart.type";
+import { colorTheme } from "@/shared/data/colorTheme";
 
 const CMPieChart = ({
   chartData,
   chartConfig = {},
-  customChartConfig,
+  customChartConfig = {},
 }: TChartProps<TCustomPieChartConfig>) => {
   // TCustomPieChartConfig와 TBasicCustomChartConfig에서 필요한 값만 구조 분해 및 기본값 설정
   const {
     chartContainerClassName = "", // 차트 컨테이너의 className || ""
-    theme = "black", // 기본 테마 색상
+    theme = colorTheme.rootColors_5, // 기본 테마 색상
     animation: {
       isAnimationActive = true, // 애니메이션 on/off
       animationBegin = 0, // 애니메이션 시작 시간
       animationDuration = 500, // 애니메이션 지속 시간
     } = {},
+    legend = false, // 범례 on/off,
     pie: {
       innerRadius = 60, // 파이 차트의 내부 반지름
       stroke = undefined, // 파이 차트의 테두리 색상
       strokeWidth = 2, // 파이 차트의 테두리 두께
+      opacity = 1, // 파이 차트의 투명도
     } = {},
     TotalValueTspan: {
       totalValueClassName = "fill-foreground text-3xl font-bold", // 중심 값 스타일
@@ -38,7 +43,7 @@ const CMPieChart = ({
       moveExplainX = 0, // 중심 텍스트 설명의 x축 이동
       moveExplainY = 0, // 중심 텍스트 설명의 y축 이동
     } = {},
-  } = customChartConfig || {};
+  } = customChartConfig;
 
   // 차트 데이터의 총 합계 계산
   const totalValue = React.useMemo(() => {
@@ -66,6 +71,9 @@ const CMPieChart = ({
           cursor={false}
           content={<ChartTooltipContent hideLabel />}
         />
+
+        {/* 범례 */}
+        {legend && <ChartLegend content={<ChartLegendContent />} />}
         <Pie
           data={dataWithColors}
           dataKey="value"
@@ -73,6 +81,7 @@ const CMPieChart = ({
           innerRadius={innerRadius} // 내부 반지름
           stroke={stroke} // 테두리 색상
           strokeWidth={strokeWidth} // 테두리 두께
+          opacity={opacity} // 투명도
           isAnimationActive={isAnimationActive} // 애니메이션 on/off
           animationBegin={animationBegin} // 애니메이션 시작 시간
           animationDuration={animationDuration} // 애니메이션 지속 시간

@@ -7,11 +7,12 @@ import {
 } from "@/shared/shadcn/ui/chart";
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
 import { TChartProps, TCustomBarChartConfig } from "../chart.type";
+import { colorTheme } from "@/shared/data/colorTheme";
 
 const CMbarChart = ({
   chartData,
   chartConfig = {},
-  customChartConfig,
+  customChartConfig = {},
 }: TChartProps<TCustomBarChartConfig>) => {
   // 첫 번째 데이터 항목의 키들 가져오기
   const dataKeys = Object.keys(chartData.data[0]);
@@ -23,7 +24,7 @@ const CMbarChart = ({
   // customChartConfig에서 필요한 속성을 구조 분해 할당으로 추출 하거나 기본값 할당
   const {
     chartContainerClassName = "", // 차트 컨테이너의 className || ""
-    theme = "black", // 차트의 색상 테마로 적용하기 // chartConfig의 color || 테마 반복 || black
+    theme = colorTheme.rootColors_5, // 차트의 색상 테마로 적용하기 // chartConfig의 color || 테마 반복 || black
     animation: {
       isAnimationActive = true, // 애니메이션 on/off || true
       animationBegin = 0, // 애니메이션 시작 시간
@@ -35,7 +36,7 @@ const CMbarChart = ({
         indicator = "line", //  툴팁의 인디케이터 스타일
       } = {},
     } = {},
-    chart: {
+    cartesian: {
       accessibilityLayer = false, // 키보드 접근과 스크린리더 기능 on/off
       vertical, // 배경 선 그리기 x축 | x + y축 // || 데이터 없으면 안 그림
       xAxis: {
@@ -52,7 +53,7 @@ const CMbarChart = ({
       strokeWidth = 0.5, // 바의 테두리 두께
     } = {},
     legend = false, // 범례 on/off || false
-  } = customChartConfig || {};
+  } = customChartConfig;
 
   //
   return (
@@ -63,10 +64,12 @@ const CMbarChart = ({
           cursor={cursor}
           content={<ChartTooltipContent indicator={indicator} />}
         />
+
         {/* 배경에 축 선 그리기 */}
         {vertical && (
           <CartesianGrid vertical={vertical === "x" ? false : true} />
         )}
+
         {/* X축 그리기 */}
         <XAxis
           dataKey={xAxisKey}
@@ -75,8 +78,10 @@ const CMbarChart = ({
           axisLine={axisLine}
           tickFormatter={tickFormatter}
         />
+
         {/* 범례 */}
         {legend && <ChartLegend content={<ChartLegendContent />} />}
+
         {/* 데이터 바 그리기 */}
         {barKeys.map((key, index) => (
           <Bar

@@ -24,16 +24,19 @@ const customPieChartConfig: TCustomPieChartConfig = {
   theme: colorTheme.vividColors_5,
   animation: {
     isAnimationActive: true,
+    animationBegin: 0,
     animationDuration: 1000,
   },
+  legend: true,
   pie: {
     innerRadius: 100,
     stroke: "black",
     strokeWidth: 3,
+    opacity: 0.7,
   },
   TotalValueTspan: {
     totalValueClassName: "fill-foreground text-6xl font-bold",
-    // moveValueX: 0,
+    moveValueX: 0,
     moveValueY: 0,
   },
   explainTspan: {
