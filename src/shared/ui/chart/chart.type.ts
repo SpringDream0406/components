@@ -1,7 +1,9 @@
 import { ChartConfig } from "@/shared/shadcn/ui/chart";
 
+// 차트 데이터 형식
+// 첫번째 데이터는 label로 x축에 사용
 export type TChartData = {
-  type: "bar" | "pie" | "line" | "area"; // 차트 종류
+  type: "bar" | "pie" | "line" | "area" | "radar" | "radial"; // 차트 종류
   data: Record<string, string | number | undefined | null>[]; // 차트의 데이터
 };
 
@@ -76,26 +78,50 @@ export type TCustomLineChartConfig = TCustomCartesianChartConfig & {
   margin?: { top?: number; right?: number; bottom?: number; left?: number }; // || {}
 };
 
-// Pie 차트 설정
-export type TCustomPieChartConfig = TBasicCustomChartConfig & {
-  pie?: {
-    innerRadius?: number; // 파이 차트의 내부 반지름 || 60
-    stroke?: string; // 파이 차트의 테두리 색상 || undefined
-    strokeWidth?: number; // 파이 차트의 테두리 두께 || 2
-    opacity?: number; // 파이 차트의 투명도 || 1 (0~1)
-  };
-  TotalValueTspan?: {
-    totalValueClassName?: string; // 테일윈드 className으로 스타일 조정 || "fill-foreground text-3xl font-bold"
-    moveValueX?: number; // 중심 값의 x축 이동 || 0
-    moveValueY?: number; // 중심 값의 y축 이동 || 0
-  };
-  explainTspan?: {
-    explainClassName?: string; // 테일윈드 className으로 스타일 조정 || fill-muted-foreground"
-    text?: string; // 텍스트 내용 || ""
-    moveExplainX?: number; // 중심 값의 x축 이동 || 0
-    moveExplainY?: number; // 중심 값의 y축 이동 || 0
+// Radar 차트 설정
+export type TCustomRadarChartConfig = TCustomCartesianChartConfig & {
+  radar?: {
+    stroke?: string; // 선의 색상 || "none"
+    strokeWidth?: number; // 선의 두께 || 2
   };
 };
+
+// 가운데 text 설정
+type TCustomCenterTextConfig = {
+  topTSpan?: {
+    topTSpanClassName?: string; // 테일윈드 className으로 스타일 조정 || "fill-foreground text-3xl font-bold"
+    topTSpanText?: string; // 텍스트 내용 || 차트마다 다른 설정 해놓음
+    moveTopTSpanX?: number; // x축 이동 || 0
+    moveTopTSpanY?: number; // y축 이동 || 0
+  };
+  bottomTSpan?: {
+    bottomTSpanClassName?: string; // 테일윈드 className으로 스타일 조정 || "fill-muted-foreground"
+    bottomTSpanText?: string; // 텍스트 내용 || 차트마다 다른 설정 해놓음
+    moveBottomTSpanX?: number; // x축 이동 || 0
+    moveBottomTSpanY?: number; // y축 이동 || 0
+  };
+};
+
+// Pie 차트 설정
+export type TCustomPieChartConfig = TBasicCustomChartConfig &
+  TCustomCenterTextConfig & {
+    pie?: {
+      innerRadius?: number; // 파이 차트의 내부 반지름 || 60
+      stroke?: string; // 파이 차트의 테두리 색상 || undefined
+      strokeWidth?: number; // 파이 차트의 테두리 두께 || 2
+      opacity?: number; // 파이 차트의 투명도 || 1 (0~1)
+    };
+  };
+
+// Radial 차트 설정
+export type TCustomRadialChartConfig = TCustomCartesianChartConfig &
+  TCustomCenterTextConfig & {
+    radial?: {
+      stroke?: string; // 선의 색상 || "none"
+      strokeWidth?: number; // 선의 두께 || 2
+      strokeOpacity?: number; // 선의 투명도 || 0.5 (0~1)
+    };
+  };
 
 // 차트 컴포넌트에 넘기는 props
 export type TChartProps<TCustomChartConfig> = {

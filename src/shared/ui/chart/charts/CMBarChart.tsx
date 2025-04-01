@@ -64,7 +64,6 @@ const CMbarChart = ({
           cursor={cursor}
           content={<ChartTooltipContent indicator={indicator} />}
         />
-
         {/* 배경에 축 선 그리기 */}
         {vertical && (
           <CartesianGrid vertical={vertical === "x" ? false : true} />

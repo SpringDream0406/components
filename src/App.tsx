@@ -1,9 +1,13 @@
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import { Chart } from "@/shared/ui/chart/Chart";
-import { barChartProps } from "@/shared/data/barChart.example.data";
-import { pieChartProps } from "@/shared/data/pieChart.example.data";
-import { lineChartProps } from "./shared/data/lineChart.example.data";
-import { areaChartProps } from "./shared/data/areaChart.example.data";
+import {
+  areaChartProps,
+  barChartProps,
+  lineChartProps,
+  pieChartProps,
+  radarChartProps,
+  radialChartProps,
+} from "./shared/data/chart.example.data/";
 
 function App() {
   const navItems = [
@@ -11,7 +15,9 @@ function App() {
     { path: "/area-chart", label: "Area Chart" },
     { path: "/bar-chart", label: "Bar Chart" },
     { path: "/line-chart", label: "Line Chart" },
+    { path: "/radar-chart", label: "Radar Chart" },
     { path: "/pie-chart", label: "Pie Chart" },
+    { path: "/radial-chart", label: "Radial Chart" },
   ];
 
   return (
@@ -32,7 +38,12 @@ function App() {
           <Route path="/area-chart" element={<Chart {...areaChartProps} />} />
           <Route path="/bar-chart" element={<Chart {...barChartProps} />} />
           <Route path="/line-chart" element={<Chart {...lineChartProps} />} />
+          <Route path="/radar-chart" element={<Chart {...radarChartProps} />} />
           <Route path="/pie-chart" element={<Chart {...pieChartProps} />} />
+          <Route
+            path="/radial-chart"
+            element={<Chart {...radialChartProps} />}
+          />
           <Route path="/" element={<div>홈 페이지</div>} />
         </Routes>
       </div>

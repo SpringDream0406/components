@@ -3,10 +3,14 @@ import {
   TCustomBarChartConfig,
   TCustomPieChartConfig,
 } from "./chart.type";
-import CMAreaChart from "./charts/CMAreaChart";
-import CMBarChart from "./charts/CMBarChart";
-import CMLineChart from "./charts/CMLineChart";
-import CMPieChart from "./charts/CMPieChart";
+import {
+  CMAreaChart,
+  CMBarChart,
+  CMLineChart,
+  CMPieChart,
+  CMRadarChart,
+  CMRadialChart,
+} from "@/shared/ui/chart/charts";
 
 export const Chart = ({
   chartData,
@@ -32,6 +36,10 @@ export const Chart = ({
         return <CMLineChart {...chartProps} />;
       case "pie":
         return <CMPieChart {...chartProps} />;
+      case "radar":
+        return <CMRadarChart {...chartProps} />;
+      case "radial":
+        return <CMRadialChart {...chartProps} />;
       default:
         return (
           <>{`type으로 적으신 ${chartData.type}이 Chart 항목에 존재하지 않습니다.`}</>
