@@ -5,8 +5,11 @@ import {
   ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/shared/shadcn/ui/chart";
-import { TChartProps, TCustomAreaChartConfig } from "../chart.type";
+} from "@/components/ui/chart";
+import {
+  TChartProps,
+  TCustomAreaChartConfig,
+} from "@/shared/ui/chart/chart.type";
 import { colorTheme } from "@/shared/data/colorTheme";
 
 const CMAreaChart = ({

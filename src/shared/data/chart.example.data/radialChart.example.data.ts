@@ -1,6 +1,6 @@
 // import { Monitor, Smartphone } from "lucide-react";
 
-import { ChartConfig } from "../../shadcn/ui/chart";
+import { ChartConfig } from "../../../components/ui/chart";
 import {
   TChartData,
   TChartProps,

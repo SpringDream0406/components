@@ -1,6 +1,6 @@
 // import { Monitor, Smartphone } from "lucide-react";
 
-import { ChartConfig } from "../../shadcn/ui/chart";
+import { ChartConfig } from "../../../components/ui/chart";
 import {
   TChartData,
   TChartProps,
@@ -36,7 +36,7 @@ const customAreaChartConfig: TCustomAreaChartConfig = {
   legend: true,
   cartesian: {
     accessibilityLayer: true,
-    // vertical: "x",
+    vertical: "x",
     xAxis: {
       tickLine: true,
       tickMargin: 10,
@@ -44,7 +44,7 @@ const customAreaChartConfig: TCustomAreaChartConfig = {
       tickFormatter: (value) => value.slice(0, 3),
     },
     yAxis: {
-      // tickCount: 10,
+      tickCount: 10,
       ticks: [0, 100, 200, 300, 400],
       tickLine: true,
       tickMargin: 10,
@@ -73,5 +73,5 @@ const areaChartConfig: ChartConfig = {
 export const areaChartProps: TChartProps<TCustomAreaChartConfig> = {
   chartData: areaChartData,
   chartConfig: areaChartConfig,
-  customChartConfig: customAreaChartConfig,
+  // customChartConfig: customAreaChartConfig,
 };

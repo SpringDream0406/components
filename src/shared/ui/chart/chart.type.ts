@@ -1,4 +1,4 @@
-import { ChartConfig } from "@/shared/shadcn/ui/chart";
+import { ChartConfig } from "@/components/ui/chart";
 
 // 차트 데이터 형식
 // 첫번째 데이터는 label로 x축에 사용
@@ -8,7 +8,7 @@ export type TChartData = {
 };
 
 // 차트의 공통 설정
-type TBasicCustomChartConfig = {
+export type TBasicCustomChartConfig = {
   chartContainerClassName?: string; // 차트 컨테이너의 className || ""
   theme?: string[]; // 차트의 색상 테마로 적용하기 // chartConfig의 color || 테마 반복 || rootColors_5
   animation?: {

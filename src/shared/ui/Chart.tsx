@@ -1,8 +1,4 @@
-import {
-  TChartProps,
-  TCustomBarChartConfig,
-  TCustomPieChartConfig,
-} from "./chart.type";
+import { TBasicCustomChartConfig, TChartProps } from "./chart/chart.type";
 import {
   CMAreaChart,
   CMBarChart,
@@ -10,16 +6,14 @@ import {
   CMPieChart,
   CMRadarChart,
   CMRadialChart,
-} from "@/shared/ui/chart/charts";
+} from "@/shared/ui/chart/";
 
-export const Chart = ({
+// TCustomConfig의 범위가 넓어서 제약 걸어줌
+export const Chart = <TCustomConfig extends TBasicCustomChartConfig>({
   chartData,
   chartConfig,
   customChartConfig,
-}: TChartProps<TCustomBarChartConfig | TCustomPieChartConfig>) => {
-  // console.log(chartData.type);
-  // console.log(chartConfig);
-
+}: TChartProps<TCustomConfig>) => {
   const renderChart = () => {
     const chartProps = {
       chartData,

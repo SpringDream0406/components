@@ -6,7 +6,7 @@ import {
   ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/shared/shadcn/ui/chart";
+} from "@/components/ui/chart";
 import { TChartProps, TCustomRadarChartConfig } from "../chart.type";
 import { colorTheme } from "@/shared/data/colorTheme";
 
