@@ -1,0 +1,22 @@
+// 이 컴포넌트는 tailwind와 shadcn을 기반으로 만들어졌습니다.
+// shadcn 공홈은 ts 중심으로 적혀있어서 js 초기 설정은 잘 모르겠습니다..
+
+1. 설치
+npx shadcn@latest add chart
+npx shadcn@latest add table
+npm install @tanstack/react-table
+
+2. 사용 
+<Chart {...areaChartProps} />
+이런 방식으로 사용합니다.
+AppRoutes.tsx 참고
+
+props는 example.data에 차트별로 예시 데이터가 들어있으며,
+customChartConfig와 areaChartConfig는 없어도 차트가 그려지지만,
+customChartConfig는 테이블 유무 등 여러 기능이 있으니 반 필수라고 생각합니다.
+customChartConfig의 내용들은 주석 끝에 || 로 기본값이 뭐로 설정되어있는지 적어두었습니다.
+
+chart.type.ts에 적어둔 주석을 그대로 옮긴것이기 때문에 혹시나 이상한 부분이 있다면 해당 파일 참고해보세요.
+
+0. 여담
+components에 들어있는 chart들의 경우 shadcn으로 설치한 chart와 명칭이 겹치다보니 앞에 CM이라는 이름을 추가했습니다.

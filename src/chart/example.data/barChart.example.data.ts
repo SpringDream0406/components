@@ -99,6 +99,7 @@ const customBarChartConfig: TCustomBarChartConfig = {
     accessibilityLayer: true,
     vertical: "x",
     xAxis: {
+      xDataKey: "label", // 명시적으로 xDataKey 추가
       xTickLine: true, // x축 눈금선 on/off
       xTickMargin: 10, // x축 눈금선과 축 사이의 간격
       xAxisLine: false, // x축 선 on/off
@@ -111,6 +112,7 @@ const customBarChartConfig: TCustomBarChartConfig = {
       yTickLine: true, // y축 눈금선 on/off
       yTickMargin: 10, // y축 눈금선과 축 사이의 간격
       yAxisLine: true, // y축 선 on/off
+      yTickFormatter: (value) => `${value}`, // y축 눈금 값 포맷 추가
     },
   },
   bar: {

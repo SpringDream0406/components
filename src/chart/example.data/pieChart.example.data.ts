@@ -1,7 +1,8 @@
 import { ChartConfig } from "@/components/ui/chart";
+import { TChartData, TChartProps, TCustomPieChartConfig } from "../chart.type";
 import { colorTheme } from "../colorTheme";
 
-const pieChartData = {
+const pieChartData: TChartData = {
   type: "pie",
   data: [
     { label: "chrome", value: 275 },
@@ -12,15 +13,15 @@ const pieChartData = {
   ],
 };
 
-const customPieChartConfig = {
+const customPieChartConfig: TCustomPieChartConfig = {
   chartContainerClassName: "aspect-square h-[200px]",
-  // theme: colorTheme.vividColors_5,
+  theme: colorTheme.vividColors_5,
   animation: {
     isAnimationActive: true,
     animationBegin: 0,
     animationDuration: 1000,
   },
-  // legend: true,
+  legend: true,
   pie: {
     innerRadius: 40,
     stroke: "black",
@@ -29,14 +30,21 @@ const customPieChartConfig = {
   },
   topTSpan: {
     topTSpanClassName: "fill-foreground text-2xl font-bold",
+    topTSpanText: "브라우저",
     moveTopTSpanX: 0,
     moveTopTSpanY: 0,
   },
   bottomTSpan: {
     bottomTSpanClassName: "fill-muted-foreground text-1xl",
     bottomTSpanText: "총합",
-    // moveExplainX: 0,
-    // moveBottomTSpanY: 0,
+    moveBottomTSpanX: 0,
+    moveBottomTSpanY: 0,
+  },
+  tooltip: {
+    cursor: false,
+    content: {
+      indicator: "dot",
+    },
   },
   table: {
     showTable: true,
@@ -45,31 +53,25 @@ const customPieChartConfig = {
   },
 };
 
-// 테마를 설정했다면 없어도 됨
-const pieChartConfig = {
+const pieChartConfig: ChartConfig = {
   chrome: {
     label: "Chrome",
-    // color: "hsl(var(--chart-1))",
   },
   safari: {
     label: "Safari",
-    // color: "hsl(var(--chart-2))",
   },
   firefox: {
     label: "Firefox",
-    // color: "hsl(var(--chart-3))",
   },
   edge: {
     label: "Edge",
-    // color: "hsl(var(--chart-4))",
   },
   other: {
     label: "Other",
-    // color: "hsl(var(--chart-5))",
   },
 };
 
-export const pieChartProps = {
+export const pieChartProps: TChartProps<TCustomPieChartConfig> = {
   chartData: pieChartData,
   chartConfig: pieChartConfig,
   customChartConfig: customPieChartConfig,

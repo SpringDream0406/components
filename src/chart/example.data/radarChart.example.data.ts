@@ -26,10 +26,21 @@ const customRadarChartConfig: TCustomRadarChartConfig = {
     animationBegin: 0,
     animationDuration: 1000,
   },
+  tooltip: {
+    cursor: false, // 툴팁 커서 설정 추가
+    content: {
+      indicator: "line", // 툴팁 인디케이터 스타일 추가
+    },
+  },
   legend: true,
+  radar: {
+    stroke: "#8884d8", // 레이더 차트 선 색상 추가
+    strokeWidth: 2, // 레이더 차트 선 두께 추가
+  },
   table: {
     showTable: true,
     tableClassName: "w-[400px]",
+    layout: "vertical", // 명시적으로 layout 추가
   },
 };
 

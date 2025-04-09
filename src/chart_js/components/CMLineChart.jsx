@@ -23,7 +23,7 @@ const CMLineChart = ({
 
   // customChartConfig에서 필요한 속성을 구조 분해 할당으로 추출하거나 기본값 설정
   const {
-    chartContainerClassName = "", // 차트 컨테이너의 className || ""
+    chartContainerClassName = "min-h-[200px] w-full", // 차트 컨테이너의 className || "min-h-[200px] w-full"
     theme = colorTheme.rootColors_5, // 차트의 색상 테마 || chartConfig의 color || 테마 반복 || black
     animation: {
       isAnimationActive = true, // 애니메이션 on/off || true

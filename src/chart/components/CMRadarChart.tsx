@@ -24,7 +24,7 @@ const CMRadarChart = ({
 
   // TCustomPieChartConfig와 TBasicCustomChartConfig에서 필요한 값만 구조 분해 및 기본값 설정
   const {
-    chartContainerClassName = "", // 차트 컨테이너의 className || ""
+    chartContainerClassName = "min-h-[200px] w-full", // 차트 컨테이너의 className || "min-h-[200px] w-full"
     theme = colorTheme.rootColors_5, // 기본 테마 색상
     animation: {
       isAnimationActive = true, // 애니메이션 on/off

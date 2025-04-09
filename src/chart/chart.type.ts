@@ -9,7 +9,7 @@ export type TChartData = {
 
 // 차트의 공통 설정
 export type TBasicCustomChartConfig = {
-  chartContainerClassName?: string; // 차트 컨테이너의 className || ""
+  chartContainerClassName?: string; // 차트 컨테이너의 className || "min-h-[200px] w-full"
   theme?: string[]; // 차트의 색상 테마로 적용하기 // chartConfig의 color || 테마 반복 || rootColors_5
   animation?: {
     isAnimationActive?: boolean; // 애니메이션 on/off || true

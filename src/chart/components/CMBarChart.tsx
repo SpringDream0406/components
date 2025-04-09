@@ -1,4 +1,3 @@
-import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts";
 import {
   ChartContainer,
   ChartLegend,
@@ -6,25 +5,26 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { TChartProps, TCustomAreaChartConfig } from "../chart.type";
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
 import { colorTheme } from "../colorTheme";
+import { TChartProps, TCustomBarChartConfig } from "../chart.type";
 
-const CMAreaChart = ({
+const CMBarChart = ({
   chartData,
   chartConfig = {},
   customChartConfig = {},
-}: TChartProps<TCustomAreaChartConfig>) => {
+}: TChartProps<TCustomBarChartConfig>) => {
   // 첫 번째 데이터 항목의 키들 가져오기
   const dataKeys = Object.keys(chartData.data[0]);
-  // XAxis의 dataKey로 사용할 키
+  // label을 XAxis의 dataKey로 사용
   const xAxisKey = "label";
-  // 나머지 키들을 Area 컴포넌트의 dataKey로 사용
-  const areaKeys = dataKeys.filter((key) => key !== xAxisKey);
+  // 나머지 키들을 Bar 컴포넌트의 dataKey로 사용
+  const barKeys = dataKeys.filter((key) => key !== xAxisKey);
 
   // customChartConfig에서 필요한 속성을 구조 분해 할당으로 추출하거나 기본값 설정
   const {
-    chartContainerClassName = "", // 차트 컨테이너의 className || ""
-    theme = colorTheme.rootColors_5, // 차트의 색상 테마
+    chartContainerClassName = "min-h-[200px] w-full", // 차트 컨테이너의 className || "min-h-[200px] w-full"
+    theme = colorTheme.rootColors_5, // 차트의 색상 테마로 적용하기
     animation: {
       isAnimationActive = true, // 애니메이션 on/off || true
       animationBegin = 0, // 애니메이션 시작 시간
@@ -36,7 +36,6 @@ const CMAreaChart = ({
         indicator = "line", // 툴팁의 인디케이터 스타일
       } = {},
     } = {},
-    legend = false, // 범례 on/off || false
     cartesian: {
       accessibilityLayer = false, // 키보드 접근과 스크린리더 기능 on/off
       vertical, // 배경 선 그리기 x축 | x + y축
@@ -58,20 +57,21 @@ const CMAreaChart = ({
         yTickFormatter = (value: string) => `${value}`, // y축 눈금선의 텍스트 포맷
       } = {},
     } = {},
-    area: {
-      type = "natural", // 영역의 타입 (monotone, natural 등)
-      dot = false, // 점 표시 on/off
-      fillOpacity = 0.4, // 영역의 투명도
+    bar: {
+      radius = 4, // 바의 모서리 둥글기
+      opacity = 1, // 바의 투명도
+      stroke = "none", // 바의 테두리 색상
+      strokeWidth = 0.5, // 바의 테두리 두께
     } = {},
-    margin = { top: 0, right: 12, bottom: 0, left: 12 }, // 차트 내부 여백
+    legend = false, // 범례 on/off || false
   } = customChartConfig;
 
   return (
     <ChartContainer className={chartContainerClassName} config={chartConfig}>
-      <AreaChart
+      <BarChart
         accessibilityLayer={accessibilityLayer}
         data={chartData.data}
-        margin={margin}
+        margin={{ top: 0, right: 12, bottom: 0, left: 12 }}
       >
         {/* 커서 올렸을 때 */}
         <ChartTooltip
@@ -109,25 +109,24 @@ const CMAreaChart = ({
         {/* 범례 */}
         {legend && <ChartLegend content={<ChartLegendContent />} />}
 
-        {/* 데이터 영역 그리기 */}
-        {areaKeys.map((key, index) => (
-          <Area
+        {/* 데이터 바 그리기 */}
+        {barKeys.map((key, index) => (
+          <Bar
             key={key}
             dataKey={key}
-            type={type}
-            dot={dot}
             fill={chartConfig[key]?.color || theme?.[index % theme.length]}
-            fillOpacity={fillOpacity}
-            stroke={chartConfig[key]?.color || theme?.[index % theme.length]}
-            stackId="a" // 어짜피 하나로 쌓기 때문에 고정값 처리
+            radius={radius}
+            opacity={opacity}
+            stroke={stroke}
+            strokeWidth={strokeWidth}
             isAnimationActive={isAnimationActive}
             animationBegin={animationBegin}
             animationDuration={animationDuration}
           />
         ))}
-      </AreaChart>
+      </BarChart>
     </ChartContainer>
   );
 };
 
-export default CMAreaChart;
+export default CMBarChart;
