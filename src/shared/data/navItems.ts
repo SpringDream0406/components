@@ -14,14 +14,4 @@ export const navItems = [
       { path: "/pie-chart", label: "Pie Chart" },
     ],
   },
-  {
-    label: "ChartWithTable",
-    subItems: [
-      { path: "/area-ct", label: "Area CT" },
-      { path: "/bar-ct", label: "Bar CT" },
-      { path: "/line-ct", label: "Line CT" },
-      { path: "/radar-ct", label: "Radar CT" },
-      { path: "/pie-ct", label: "Pie CT" },
-    ],
-  },
 ];
