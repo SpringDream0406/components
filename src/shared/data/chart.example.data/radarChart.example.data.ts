@@ -21,7 +21,7 @@ const radarChartData: TChartData = {
 };
 
 const customRadarChartConfig: TCustomRadarChartConfig = {
-  // chartContainerClassName: "mx-auto aspect-square max-h-[500px]",
+  chartContainerClassName: "aspect-square h-[300px]",
   theme: colorTheme.vividColors_5,
   animation: {
     isAnimationActive: true,
@@ -29,6 +29,10 @@ const customRadarChartConfig: TCustomRadarChartConfig = {
     animationDuration: 1000,
   },
   legend: true,
+  table: {
+    showTable: true,
+    tableClassName: "w-[400px]",
+  },
 };
 
 // 테마를 설정했다면 없어도 됨

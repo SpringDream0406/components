@@ -8,8 +8,8 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { TChartProps, TCustomPieChartConfig } from "../chart.type";
 import { colorTheme } from "@/shared/data/colorTheme";
+import { TChartProps, TCustomPieChartConfig } from "./chart.type";
 
 const CMPieChart = ({
   chartData,

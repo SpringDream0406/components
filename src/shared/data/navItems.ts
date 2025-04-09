@@ -12,7 +12,6 @@ export const navItems = [
       { path: "/line-chart", label: "Line Chart" },
       { path: "/radar-chart", label: "Radar Chart" },
       { path: "/pie-chart", label: "Pie Chart" },
-      { path: "/radial-chart", label: "Radial Chart" },
     ],
   },
   {
@@ -23,12 +22,6 @@ export const navItems = [
       { path: "/line-ct", label: "Line CT" },
       { path: "/radar-ct", label: "Radar CT" },
       { path: "/pie-ct", label: "Pie CT" },
-      { path: "/radial-ct", label: "Radial CT" },
     ],
-  },
-
-  {
-    label: "Tables",
-    subItems: [{ path: "/data-table", label: "Data Table" }],
   },
 ];

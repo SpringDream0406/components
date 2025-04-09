@@ -21,33 +21,45 @@ const lineChartData: TChartData = {
 };
 
 const customLineChartConfig: TCustomLineChartConfig = {
-  // theme: colorTheme.vividColors_5,
-  // animation: {
-  //   isAnimationActive: true,
-  //   animationBegin: 0,
-  //   animationDuration: 1000,
-  // },
-  // tooltip: {
-  //   cursor: true,
-  //   content: {
-  //     indicator: "dot",
-  //   },
-  // },
-  // legend: true,
-  // chart: {
-  //   accessibilityLayer: true,
-  //   vertical: "x",
-  //   xAxis: {
-  //     tickLine: true,
-  //     tickMargin: 10,
-  //     axisLine: false,
-  //     tickFormatter: (value) => value.slice(0, 3),
-  //   },
-  // },
+  chartContainerClassName: "h-[300px] w-[400px]",
+  theme: colorTheme.vividColors_5,
+  animation: {
+    isAnimationActive: true,
+    animationBegin: 0,
+    animationDuration: 1000,
+  },
+  tooltip: {
+    cursor: true,
+    content: {
+      indicator: "dot",
+    },
+  },
+  legend: true,
+  cartesian: {
+    accessibilityLayer: true,
+    vertical: "y",
+    xAxis: {
+      tickLine: true,
+      tickMargin: 10,
+      axisLine: false,
+      tickFormatter: (value) => value.slice(0, 3),
+    },
+    yAxis: {
+      tickCount: 10,
+      ticks: [0, 100, 200, 300, 400],
+      tickLine: true,
+      tickMargin: 10,
+      axisLine: true,
+    },
+  },
   line: {
     strokeWidth: 10,
     dot: true,
     type: "linear",
+  },
+  table: {
+    showTable: true,
+    tableClassName: "w-[350px]",
   },
 };
 

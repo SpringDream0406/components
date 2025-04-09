@@ -21,6 +21,7 @@ const areaChartData: TChartData = {
 };
 
 const customAreaChartConfig: TCustomAreaChartConfig = {
+  chartContainerClassName: "h-[300px] w-[400px]",
   theme: colorTheme.vividColors_5,
   animation: {
     isAnimationActive: true,
@@ -56,6 +57,11 @@ const customAreaChartConfig: TCustomAreaChartConfig = {
     dot: true,
     fillOpacity: 0.4,
   },
+  table: {
+    showTable: true,
+    tableClassName: "w-[300px]",
+    layout: "horizontal",
+  },
 };
 
 // 테마를 설정하고 범례가 필요없다면 없어도 됨
@@ -66,12 +72,12 @@ const areaChartConfig: ChartConfig = {
   },
   mobile: {
     label: "Mobile",
-    // color: "hsl(var(--chart-2))",
+    // color: "blue",
   },
 };
 
 export const areaChartProps: TChartProps<TCustomAreaChartConfig> = {
   chartData: areaChartData,
   chartConfig: areaChartConfig,
-  // customChartConfig: customAreaChartConfig,
+  customChartConfig: customAreaChartConfig,
 };

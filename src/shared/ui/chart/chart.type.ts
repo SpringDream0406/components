@@ -23,6 +23,13 @@ export type TBasicCustomChartConfig = {
     };
   };
   legend?: boolean; // 범례 on/off || false
+
+  // 테이블 관련 설정 추가
+  table?: {
+    showTable?: boolean; // 테이블 표시 여부 || false
+    tableClassName?: string; // 테이블의 className || ""
+    layout?: "vertical" | "horizontal"; // 테이블 레이아웃 || "vertical"
+  };
 };
 
 // x/y축이 필요한 cartesian 차트 설정
@@ -79,7 +86,7 @@ export type TCustomLineChartConfig = TCustomCartesianChartConfig & {
 };
 
 // Radar 차트 설정
-export type TCustomRadarChartConfig = TCustomCartesianChartConfig & {
+export type TCustomRadarChartConfig = TBasicCustomChartConfig & {
   radar?: {
     stroke?: string; // 선의 색상 || "none"
     strokeWidth?: number; // 선의 두께 || 2
@@ -110,16 +117,6 @@ export type TCustomPieChartConfig = TBasicCustomChartConfig &
       stroke?: string; // 파이 차트의 테두리 색상 || undefined
       strokeWidth?: number; // 파이 차트의 테두리 두께 || 2
       opacity?: number; // 파이 차트의 투명도 || 1 (0~1)
-    };
-  };
-
-// Radial 차트 설정
-export type TCustomRadialChartConfig = TCustomCartesianChartConfig &
-  TCustomCenterTextConfig & {
-    radial?: {
-      stroke?: string; // 선의 색상 || "none"
-      strokeWidth?: number; // 선의 두께 || 2
-      strokeOpacity?: number; // 선의 투명도 || 0.5 (0~1)
     };
   };
 

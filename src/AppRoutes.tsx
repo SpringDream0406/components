@@ -6,10 +6,7 @@ import {
   lineChartProps,
   pieChartProps,
   radarChartProps,
-  radialChartProps,
 } from "@/shared/data/chart.example.data/";
-import DataTable from "./shared/ui/DataTable";
-import { tableProps } from "./shared/data/table.example.data/table.example.data";
 import ChartWithTable from "./shared/ui/ChartWithTable";
 
 const AppRoutes = () => {
@@ -24,7 +21,6 @@ const AppRoutes = () => {
       <Route path="/line-chart" element={<Chart {...lineChartProps} />} />
       <Route path="/radar-chart" element={<Chart {...radarChartProps} />} />
       <Route path="/pie-chart" element={<Chart {...pieChartProps} />} />
-      <Route path="/radial-chart" element={<Chart {...radialChartProps} />} />
 
       {/* ChartWithTable Routes */}
       <Route path="/area-ct" element={<ChartWithTable {...areaChartProps} />} />
@@ -35,13 +31,6 @@ const AppRoutes = () => {
         element={<ChartWithTable {...radarChartProps} />}
       />
       <Route path="/pie-ct" element={<ChartWithTable {...pieChartProps} />} />
-      <Route
-        path="/radial-ct"
-        element={<ChartWithTable {...radialChartProps} />}
-      />
-
-      {/* Table Routes */}
-      <Route path="/data-table" element={<DataTable {...tableProps} />} />
     </Routes>
   );
 };

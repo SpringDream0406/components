@@ -5,7 +5,6 @@ import {
   CMLineChart,
   CMPieChart,
   CMRadarChart,
-  CMRadialChart,
 } from "@/shared/ui/chart/";
 
 // TCustomConfig의 범위가 넓어서 제약 걸어줌
@@ -32,8 +31,6 @@ export const Chart = <TCustomConfig extends TBasicCustomChartConfig>({
         return <CMPieChart {...chartProps} />;
       case "radar":
         return <CMRadarChart {...chartProps} />;
-      case "radial":
-        return <CMRadialChart {...chartProps} />;
       default:
         return (
           <>{`type으로 적으신 ${chartData.type}이 Chart 항목에 존재하지 않습니다.`}</>

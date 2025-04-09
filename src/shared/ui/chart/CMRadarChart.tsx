@@ -7,8 +7,8 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { TChartProps, TCustomRadarChartConfig } from "../chart.type";
 import { colorTheme } from "@/shared/data/colorTheme";
+import { TChartProps, TCustomRadarChartConfig } from "./chart.type";
 
 const CMRadarChart = ({
   chartData,

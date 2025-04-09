@@ -20,30 +20,35 @@ const pieChartData: TChartData = {
 };
 
 const customPieChartConfig: TCustomPieChartConfig = {
-  chartContainerClassName: "mx-auto aspect-square max-h-[500px]",
-  theme: colorTheme.vividColors_5,
+  chartContainerClassName: "aspect-square h-[200px]",
+  // theme: colorTheme.vividColors_5,
   animation: {
     isAnimationActive: true,
     animationBegin: 0,
     animationDuration: 1000,
   },
-  legend: true,
+  // legend: true,
   pie: {
-    innerRadius: 100,
+    innerRadius: 40,
     stroke: "black",
     strokeWidth: 3,
     opacity: 0.7,
   },
   topTSpan: {
-    topTSpanClassName: "fill-foreground text-6xl font-bold",
+    topTSpanClassName: "fill-foreground text-2xl font-bold",
     moveTopTSpanX: 0,
     moveTopTSpanY: 0,
   },
   bottomTSpan: {
-    bottomTSpanClassName: "fill-muted-foreground text-2xl",
+    bottomTSpanClassName: "fill-muted-foreground text-1xl",
     bottomTSpanText: "총합",
     // moveExplainX: 0,
-    moveBottomTSpanY: -20,
+    // moveBottomTSpanY: 0,
+  },
+  table: {
+    showTable: true,
+    tableClassName: "w-[200px]",
+    layout: "horizontal",
   },
 };
 

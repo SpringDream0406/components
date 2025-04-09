@@ -1,6 +1,7 @@
 import { Chart } from "./Chart";
 import { TBasicCustomChartConfig, TChartProps } from "./chart/chart.type";
 import DataTable from "./DataTable";
+import { colorTheme } from "../data/colorTheme"; // colorTheme 가져오기
 
 const ChartWithTable = <TCustomConfig extends TBasicCustomChartConfig>({
   chartData,
@@ -15,43 +16,65 @@ const ChartWithTable = <TCustomConfig extends TBasicCustomChartConfig>({
 
   // 색상 매핑 함수
   const getColorForKey = (key: string, index: number): string => {
-    // 1. chartConfig에서 색상 확인
     if (chartConfig?.[key]?.color) {
       return chartConfig[key].color;
     }
-
-    // 2. customChartConfig.theme에서 색상 확인
     if (customChartConfig?.theme && customChartConfig.theme[index]) {
       return customChartConfig.theme[index];
     }
-
-    // 3. 기본 색상
-    return "#CCCCCC"; // 회색 (기본값)
+    // theme이 없을 경우 colorTheme.rootColors_5를 순서대로 사용
+    return colorTheme.rootColors_5[index % colorTheme.rootColors_5.length];
   };
 
-  // 컬럼 정의
-  const columns = [
+  // PieChart 전용 컬럼 정의
+  const pieColumns = [
+    {
+      accessorKey: "label",
+      header: "Label",
+      cell: ({ row }: { row: any }) => (
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <div
+            style={{
+              width: "12px",
+              height: "12px",
+              backgroundColor: getColorForKey(row.original.label, row.index),
+              borderRadius: "50%",
+            }}
+          />
+          <span>{row.original.label}</span>
+        </div>
+      ),
+    },
+    ...Object.keys(chartData.data[0])
+      .filter((key) => key !== "label")
+      .map((key) => ({
+        accessorKey: key,
+        header: key.charAt(0).toUpperCase() + key.slice(1),
+      })),
+  ];
+
+  // 기본 컬럼 정의
+  const defaultColumns = [
     {
       accessorKey: "label",
       header: "Label",
     },
     ...Object.keys(chartData.data[0])
-      .filter((key) => key !== "label") // label 필드는 제외
-      .map((key, index) => ({
+      .filter((key) => key !== "label")
+      .map((key, index, array) => ({
         accessorKey: key,
         header: () => (
-          // 함수로 정의
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            {/* 색상 원(circle) */}
-            <div
-              style={{
-                width: "12px",
-                height: "12px",
-                backgroundColor: getColorForKey(key, index), // 동적으로 색상 가져오기
-                borderRadius: "50%",
-              }}
-            />
-            {/* 헤더 텍스트 */}
+            {chartData.type !== "radial" || index !== array.length - 1 ? ( // 마지막 헤더에서 색상 제외
+              <div
+                style={{
+                  width: "12px",
+                  height: "12px",
+                  backgroundColor: getColorForKey(key, index),
+                  borderRadius: "50%",
+                }}
+              />
+            ) : null}
             <span>{key.charAt(0).toUpperCase() + key.slice(1)}</span>
           </div>
         ),
@@ -61,14 +84,28 @@ const ChartWithTable = <TCustomConfig extends TBasicCustomChartConfig>({
   // 테이블 데이터와 컬럼 정의
   const tableProps = {
     data: chartData.data,
-    columns,
+    columns: chartData.type === "pie" ? pieColumns : defaultColumns, // PieChart와 기본 컬럼 분리
+    className: customChartConfig?.table?.tableClassName || "", // 테이블 클래스 적용
   };
 
+  // 레이아웃 설정: 가로 또는 세로
+  const isHorizontalLayout = customChartConfig?.table?.layout === "horizontal";
+
   return (
-    <>
-      <Chart {...chartProps} />
-      <DataTable {...tableProps} />
-    </>
+    <div
+      className={`flex ${
+        isHorizontalLayout ? "flex-row" : "flex-col"
+      } items-center justify-center gap-4`}
+    >
+      <div className="flex-shrink-0">
+        <Chart {...chartProps} />
+      </div>
+      {customChartConfig?.table?.showTable && (
+        <div className="flex-shrink-0">
+          <DataTable {...tableProps} />
+        </div>
+      )}
+    </div>
   );
 };
 

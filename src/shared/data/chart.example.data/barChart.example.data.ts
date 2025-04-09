@@ -85,35 +85,48 @@ const barChartData: TChartData = {
 };
 
 const customBarChartConfig: TCustomBarChartConfig = {
-  //   theme: colorTheme.vividColors_5,
-  //   animation: {
-  //     isAnimationActive: true,
-  //     animationBegin: 0,
-  //     animationDuration: 1000,
-  //   },
-  //   tooltip: {
-  //     cursor: true,
-  //     content: {
-  // indicator: "dot",
-  //     },
-  //   },
-  //   legend: true,
-  //   chart: {
-  //     accessibilityLayer: true,
-  //     vertical: "x",
-  //     xAxis: {
-  //       tickLine: true,
-  //       tickMargin: 10,
-  //       axisLine: false,
-  //       tickFormatter: (value) => value.slice(0, 3),
-  //     },
-  //   },
-  //   bar: {
-  //     radius: 1,
-  //     opacity: 0.7,
-  //     stroke: "black",
-  //     strokeWidth: 0.5,
-  //   },
+  chartContainerClassName: "h-[300px] w-[400px]",
+  theme: colorTheme.vividColors_5,
+  animation: {
+    isAnimationActive: true,
+    animationBegin: 0,
+    animationDuration: 1000,
+  },
+  tooltip: {
+    cursor: true,
+    content: {
+      indicator: "dot",
+    },
+  },
+  legend: true,
+  cartesian: {
+    accessibilityLayer: true,
+    vertical: "x",
+    xAxis: {
+      tickLine: true,
+      tickMargin: 10,
+      axisLine: false,
+      tickFormatter: (value) => value.slice(0, 3),
+    },
+    yAxis: {
+      tickCount: 10,
+      ticks: [0, 100, 200, 300, 400],
+      tickLine: true,
+      tickMargin: 10,
+      axisLine: true,
+    },
+  },
+  bar: {
+    radius: 1,
+    opacity: 0.7,
+    stroke: "black",
+    strokeWidth: 0.5,
+  },
+  table: {
+    showTable: true,
+    tableClassName: "w-[900px] h-[200px]",
+    layout: "horizontal",
+  },
 };
 
 // 테마를 설정하고 범례가 필요없다면 없어도 됨
