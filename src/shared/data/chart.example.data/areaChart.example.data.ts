@@ -21,7 +21,7 @@ const areaChartData: TChartData = {
 };
 
 const customAreaChartConfig: TCustomAreaChartConfig = {
-  chartContainerClassName: "h-[300px] w-[400px]",
+  chartContainerClassName: "h-[400px] w-[400px]",
   theme: colorTheme.vividColors_5,
   animation: {
     isAnimationActive: true,
@@ -39,17 +39,17 @@ const customAreaChartConfig: TCustomAreaChartConfig = {
     accessibilityLayer: true,
     vertical: "x",
     xAxis: {
-      tickLine: true,
-      tickMargin: 10,
-      axisLine: false,
-      tickFormatter: (value) => value.slice(0, 3),
+      xTickLine: true, // x축 눈금선 on/off
+      xTickMargin: 10, // x축 눈금선과 축 사이의 간격
+      xAxisLine: false, // x축 선 on/off
+      xTickFormatter: (value) => value.slice(0, 3), // x축 텍스트 포맷
     },
     yAxis: {
-      tickCount: 10,
-      ticks: [0, 100, 200, 300, 400],
-      tickLine: true,
-      tickMargin: 10,
-      axisLine: true,
+      // yTickCount: 10, // y축 눈금 개수
+      // yTicks: [0, 100, 200, 300, 400, 500], // y축 눈금 값
+      yTickLine: true, // y축 눈금선 on/off
+      yTickMargin: 10, // y축 눈금선과 축 사이의 간격
+      yAxisLine: true, // y축 선 on/off
     },
   },
   area: {

@@ -42,14 +42,24 @@ const CMAreaChart = ({
     legend = false, // 범례 on/off || false
     cartesian: {
       accessibilityLayer = false, // 키보드 접근과 스크린리더 기능 on/off
-      vertical, // 배경 선 그리기 x축 | x + y축 // || 데이터 없으면 안 그림
+      vertical, // 배경 선 그리기 x축 | x + y축
       xAxis: {
-        tickLine = false, // 축의 눈금선 on/off
-        tickMargin = 8, // 눈금선과 축 사이의 간격
-        axisLine = false, // 축의 선 on/off
-        tickFormatter = (value: string) => value.slice(0, 3), // 눈금선의 텍스트 포맷
+        xDataKey = "label", // x축 데이터 키 || "label"
+        xTickLine = false, // x축의 눈금선 on/off
+        xTickMargin = 8, // x축 눈금선과 축 사이의 간격
+        xAxisLine = false, // x축의 선 on/off
+        xTickFormatter = (value: string) => value.slice(0, 3), // x축 눈금선의 텍스트 포맷
       } = {},
-      yAxis = {}, // y축 설정
+      yAxis: {
+        yDataKey = undefined, // y축 데이터 키 || undefined
+        yShow = true, // y축 표시 여부 || true
+        yTickCount = 5, // y축의 눈금 개수
+        yTicks = undefined, // y축의 눈금 값
+        yTickLine = false, // y축의 눈금선 on/off
+        yTickMargin = 8, // y축 눈금선과 축 사이의 간격
+        yAxisLine = false, // y축의 선 on/off
+        yTickFormatter = (value: string) => `${value}`, // y축 눈금선의 텍스트 포맷
+      } = {},
     } = {},
     area: {
       type = "natural", // 영역의 타입 (monotone, natural 등)
@@ -59,7 +69,6 @@ const CMAreaChart = ({
     margin = { top: 0, right: 12, bottom: 0, left: 12 }, // 차트 내부 여백
   } = customChartConfig;
 
-  //
   return (
     <ChartContainer className={chartContainerClassName} config={chartConfig}>
       <AreaChart
@@ -80,22 +89,26 @@ const CMAreaChart = ({
 
         {/* X축 그리기 */}
         <XAxis
-          dataKey={xAxisKey}
-          tickLine={tickLine}
-          tickMargin={tickMargin}
-          axisLine={axisLine}
-          tickFormatter={tickFormatter}
+          dataKey={xDataKey}
+          tickLine={xTickLine}
+          tickMargin={xTickMargin}
+          axisLine={xAxisLine}
+          tickFormatter={xTickFormatter}
         />
 
-        {yAxis && (
+        {/* Y축 그리기 (yShow가 true일 때만 렌더링) */}
+        {yShow && (
           <YAxis
-            // tickCount={tickCount}
-            ticks={undefined}
-            tickLine={false} // 눈금선 on/off
-            axisLine={false} // 축의 선 on/off
-            tickFormatter={(value) => `${value}`} // 값 포맷팅
+            dataKey={yDataKey}
+            tickCount={yTickCount}
+            ticks={yTicks}
+            tickLine={yTickLine}
+            tickMargin={yTickMargin}
+            axisLine={yAxisLine}
+            tickFormatter={yTickFormatter}
           />
         )}
+
         {/* 범례 */}
         {legend && <ChartLegend content={<ChartLegendContent />} />}
 

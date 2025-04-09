@@ -38,18 +38,21 @@ export type TCustomCartesianChartConfig = TBasicCustomChartConfig & {
     accessibilityLayer?: boolean; // 키보드 접근과 스크린리더 기능 on/off || false
     vertical?: "x" | "y"; // 배경 선 그리기 x축 | x + y축
     xAxis?: {
-      tickLine?: boolean; // 축의 눈금선 on/off || false
-      tickMargin?: number; // 눈금선과 축 사이의 간격 || 10
-      axisLine?: boolean; // 축의 선 on/off || false
-      tickFormatter?: (value: string) => string; // 눈금선의 텍스트 포맷 || value.slice(0, 3)
+      xDataKey?: string; // x축 데이터 키 || "label"
+      xTickLine?: boolean; // x축의 눈금선 on/off || false
+      xTickMargin?: number; // x축 눈금선과 축 사이의 간격 || 10
+      xAxisLine?: boolean; // x축의 선 on/off || false
+      xTickFormatter?: (value: string) => string; // x축 눈금선의 텍스트 포맷 || value.slice(0, 3)
     };
     yAxis?: {
-      tickCount?: number; // y축의 눈금 개수 || 5 // ticks 설정되면 무시됨
-      ticks?: number[]; // y축의 눈금 값 || undefined
-      tickLine?: boolean; // 축의 눈금선 on/off || false
-      tickMargin?: number; // 눈금선과 축 사이의 간격 || 10
-      axisLine?: boolean; // 축의 선 on/off || false
-      tickFormatter?: (value: string) => string; // 눈금선의 텍스트 포맷 || `${value}`
+      yDataKey?: string; // y축 데이터 키 || undefined
+      yShow?: boolean; // y축 표시 여부 || true
+      yTickCount?: number; // y축의 눈금 개수 || 5 // yTicks 설정되면 무시됨
+      yTicks?: number[]; // y축의 눈금 값 || undefined
+      yTickLine?: boolean; // y축의 눈금선 on/off || false
+      yTickMargin?: number; // y축 눈금선과 축 사이의 간격 || 10
+      yAxisLine?: boolean; // y축의 선 on/off || false
+      yTickFormatter?: (value: string) => string; // y축 눈금선의 텍스트 포맷 || `${value}`
     };
   };
 };
