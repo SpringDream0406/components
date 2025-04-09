@@ -1,11 +1,9 @@
-// import { Monitor, Smartphone } from "lucide-react";
-
-import { ChartConfig } from "../../../components/ui/chart";
+import { ChartConfig } from "@/components/ui/chart";
 import {
   TChartData,
   TChartProps,
   TCustomRadarChartConfig,
-} from "../../ui/chart/chart.type";
+} from "../chart.type";
 import { colorTheme } from "../colorTheme";
 
 const radarChartData: TChartData = {

@@ -1,12 +1,12 @@
 import { Route, Routes } from "react-router-dom";
-import { Chart } from "@/shared/ui/Chart";
+import { Chart } from "@/TS_chart/Chart";
 import {
   areaChartProps,
   barChartProps,
   lineChartProps,
   pieChartProps,
   radarChartProps,
-} from "@/shared/data/chart.example.data/";
+} from "@/TS_chart/example.data";
 
 const AppRoutes = () => {
   return (

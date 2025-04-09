@@ -1,14 +1,9 @@
 // import { Monitor, Smartphone } from "lucide-react";
 
-import { ChartConfig } from "../../../components/ui/chart";
-import {
-  TChartData,
-  TChartProps,
-  TCustomLineChartConfig,
-} from "../../ui/chart/chart.type";
+import { ChartConfig } from "@/components/ui/chart";
 import { colorTheme } from "../colorTheme";
 
-const lineChartData: TChartData = {
+const lineChartData = {
   type: "line",
   data: [
     { label: "January", desktop: 186, mobile: null },
@@ -20,7 +15,7 @@ const lineChartData: TChartData = {
   ],
 };
 
-const customLineChartConfig: TCustomLineChartConfig = {
+const customLineChartConfig = {
   chartContainerClassName: "h-[300px] w-[400px]",
   theme: colorTheme.vividColors_5,
   animation: {
@@ -65,7 +60,7 @@ const customLineChartConfig: TCustomLineChartConfig = {
 };
 
 // 테마를 설정하고 범례가 필요없다면 없어도 됨
-const lineChartConfig: ChartConfig = {
+const lineChartConfig = {
   desktop: {
     label: "Desktop",
     // color: "hsl(var(--chart-1))",
@@ -76,7 +71,7 @@ const lineChartConfig: ChartConfig = {
   },
 };
 
-export const lineChartProps: TChartProps<TCustomLineChartConfig> = {
+export const lineChartProps = {
   chartData: lineChartData,
   chartConfig: lineChartConfig,
   customChartConfig: customLineChartConfig,

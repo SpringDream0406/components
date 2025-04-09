@@ -1,7 +1,7 @@
 import { BrowserRouter as Router } from "react-router-dom";
-import NavBar from "@/shared/ui/NavBar";
+import NavBar from "@/NavBar";
 import AppRoutes from "@/AppRoutes";
-import { navItems } from "@/shared/data/navItems";
+import { navItems } from "@/navItems";
 
 function App() {
   return (

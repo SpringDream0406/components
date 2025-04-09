@@ -1,11 +1,7 @@
 // import { Monitor, Smartphone } from "lucide-react";
 
-import { ChartConfig } from "../../../components/ui/chart";
-import {
-  TChartData,
-  TChartProps,
-  TCustomBarChartConfig,
-} from "../../ui/chart/chart.type";
+import { ChartConfig } from "@/components/ui/chart";
+import { TChartData, TChartProps, TCustomBarChartConfig } from "../chart.type";
 import { colorTheme } from "../colorTheme";
 
 const barChartData: TChartData = {

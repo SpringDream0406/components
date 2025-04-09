@@ -1,13 +1,13 @@
-import { TBasicCustomChartConfig, TChartProps } from "./chart/chart.type";
+import { TBasicCustomChartConfig, TChartProps } from "./chart.type";
 import {
   CMAreaChart,
   CMBarChart,
   CMLineChart,
   CMPieChart,
   CMRadarChart,
-} from "@/shared/ui/chart/";
-import DataTable from "./DataTable";
-import { colorTheme } from "../data/colorTheme"; // colorTheme 가져오기
+  DataTable,
+} from "./components";
+import { colorTheme } from "./colorTheme"; // colorTheme 가져오기
 
 // TCustomConfig의 범위가 넓어서 제약 걸어줌
 export const Chart = <TCustomConfig extends TBasicCustomChartConfig>({

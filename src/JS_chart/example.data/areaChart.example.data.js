@@ -1,14 +1,9 @@
 // import { Monitor, Smartphone } from "lucide-react";
 
-import { ChartConfig } from "../../../components/ui/chart";
-import {
-  TChartData,
-  TChartProps,
-  TCustomAreaChartConfig,
-} from "../../ui/chart/chart.type";
+import { ChartConfig } from "@/components/ui/chart";
 import { colorTheme } from "../colorTheme";
 
-const areaChartData: TChartData = {
+const areaChartData = {
   type: "area",
   data: [
     { label: "January", desktop: 186, mobile: 1000 },
@@ -20,7 +15,7 @@ const areaChartData: TChartData = {
   ],
 };
 
-const customAreaChartConfig: TCustomAreaChartConfig = {
+const customAreaChartConfig = {
   chartContainerClassName: "h-[400px] w-[400px]",
   theme: colorTheme.vividColors_5,
   animation: {
@@ -65,7 +60,7 @@ const customAreaChartConfig: TCustomAreaChartConfig = {
 };
 
 // 테마를 설정하고 범례가 필요없다면 없어도 됨
-const areaChartConfig: ChartConfig = {
+const areaChartConfig = {
   desktop: {
     label: "Desktop",
     // color: "yellow",
@@ -76,7 +71,7 @@ const areaChartConfig: ChartConfig = {
   },
 };
 
-export const areaChartProps: TChartProps<TCustomAreaChartConfig> = {
+export const areaChartProps = {
   chartData: areaChartData,
   chartConfig: areaChartConfig,
   customChartConfig: customAreaChartConfig,

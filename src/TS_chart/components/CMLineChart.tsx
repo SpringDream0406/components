@@ -7,8 +7,8 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { colorTheme } from "@/shared/data/colorTheme";
-import { TChartProps, TCustomLineChartConfig } from "./chart.type";
+import { colorTheme } from "../colorTheme";
+import { TChartProps, TCustomLineChartConfig } from "../chart.type";
 
 const CMLineChart = ({
   chartData,

@@ -1,14 +1,7 @@
-// import { Monitor, Smartphone } from "lucide-react";
-
-import { ChartConfig } from "../../../components/ui/chart";
-import {
-  TChartData,
-  TChartProps,
-  TCustomPieChartConfig,
-} from "../../ui/chart/chart.type";
+import { ChartConfig } from "@/components/ui/chart";
 import { colorTheme } from "../colorTheme";
 
-const pieChartData: TChartData = {
+const pieChartData = {
   type: "pie",
   data: [
     { label: "chrome", value: 275 },
@@ -19,7 +12,7 @@ const pieChartData: TChartData = {
   ],
 };
 
-const customPieChartConfig: TCustomPieChartConfig = {
+const customPieChartConfig = {
   chartContainerClassName: "aspect-square h-[200px]",
   // theme: colorTheme.vividColors_5,
   animation: {
@@ -53,7 +46,7 @@ const customPieChartConfig: TCustomPieChartConfig = {
 };
 
 // 테마를 설정했다면 없어도 됨
-const pieChartConfig: ChartConfig = {
+const pieChartConfig = {
   chrome: {
     label: "Chrome",
     // color: "hsl(var(--chart-1))",
@@ -76,7 +69,7 @@ const pieChartConfig: ChartConfig = {
   },
 };
 
-export const pieChartProps: TChartProps<TCustomPieChartConfig> = {
+export const pieChartProps = {
   chartData: pieChartData,
   chartConfig: pieChartConfig,
   customChartConfig: customPieChartConfig,

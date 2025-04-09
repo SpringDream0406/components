@@ -8,14 +8,13 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { colorTheme } from "@/shared/data/colorTheme";
-import { TChartProps, TCustomPieChartConfig } from "./chart.type";
+import { colorTheme } from "../colorTheme";
 
 const CMPieChart = ({
   chartData,
   chartConfig = {},
   customChartConfig = {},
-}: TChartProps<TCustomPieChartConfig>) => {
+}) => {
   // TCustomPieChartConfig와 TBasicCustomChartConfig에서 필요한 값만 구조 분해 및 기본값 설정
   const {
     chartContainerClassName = "", // 차트 컨테이너의 className || ""

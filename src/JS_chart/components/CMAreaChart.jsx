@@ -6,17 +6,13 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import {
-  TChartProps,
-  TCustomAreaChartConfig,
-} from "@/shared/ui/chart/chart.type";
-import { colorTheme } from "@/shared/data/colorTheme";
+import { colorTheme } from "../colorTheme";
 
 const CMAreaChart = ({
   chartData,
   chartConfig = {},
   customChartConfig = {},
-}: TChartProps<TCustomAreaChartConfig>) => {
+}) => {
   // 첫 번째 데이터 항목의 키들 가져오기
   const dataKeys = Object.keys(chartData.data[0]);
   // XAxis의 dataKey로 사용할 키
@@ -48,7 +44,7 @@ const CMAreaChart = ({
         xTickLine = false, // x축의 눈금선 on/off
         xTickMargin = 8, // x축 눈금선과 축 사이의 간격
         xAxisLine = false, // x축의 선 on/off
-        xTickFormatter = (value: string) => value.slice(0, 3), // x축 눈금선의 텍스트 포맷
+        xTickFormatter = (value) => value.slice(0, 3), // x축 눈금선의 텍스트 포맷
       } = {},
       yAxis: {
         yDataKey = undefined, // y축 데이터 키 || undefined
@@ -58,7 +54,7 @@ const CMAreaChart = ({
         yTickLine = false, // y축의 눈금선 on/off
         yTickMargin = 8, // y축 눈금선과 축 사이의 간격
         yAxisLine = false, // y축의 선 on/off
-        yTickFormatter = (value: string) => `${value}`, // y축 눈금선의 텍스트 포맷
+        yTickFormatter = (value) => `${value}`, // y축 눈금선의 텍스트 포맷
       } = {},
     } = {},
     area: {
