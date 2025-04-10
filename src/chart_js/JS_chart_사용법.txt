@@ -12,7 +12,7 @@ npm install @tanstack/react-table
 AppRoutes.tsx 참고
 
 props는 example.data에 차트별로 예시 데이터가 들어있으며,
-customChartConfig와 areaChartConfig는 없어도 차트가 그려지지만,
+customChartConfig와 chartConfig는 없어도 차트가 그려지지만,
 customChartConfig는 테이블 유무 등 여러 기능이 있으니 반 필수라고 생각합니다.
 customChartConfig의 내용들은 주석 끝에 || 로 기본값이 뭐로 설정되어있는지 적어두었습니다.
 
